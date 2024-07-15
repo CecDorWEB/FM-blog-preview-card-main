@@ -5,14 +5,25 @@ $dark_color: hsl(0, 0%, 7%);
 $radius: 20px;
 $primary_font: "Figtree";
 
+$card_max_width: clamp(20em, 41vw, 24em);
+
+$heading_font_size: clamp(1.25em, 3vw, 1.5em);
+$body_medium_font_size: clamp(0.875em, 3vw, 1em);
+$body_small_font_size: clamp(0.75em, 3vw, 0.875em);
+
+$size_gap: 1.5em;
+
+$bold_weight: 800;
+$regular_weight: 500;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: $primary_font;
-  p {
-    font-size: 85%;
-  }
+  // p {
+  //   font-size: 16px;
+  // }
 }
 
 html {
@@ -30,55 +41,61 @@ body {
 article {
   display: flex;
   flex-direction: column;
-  max-width: 20em;
+  max-width: $card_max_width;
   padding: 1.5em;
   background-color: $light_color;
   border-radius: $radius;
   border: 1px solid $dark_color;
   box-shadow: 8px 8px 0 $dark_color;
-  gap: 1em;
+  gap: $size_gap;
   img.article_img {
     height: 200px;
     width: 100%;
     object-fit: cover;
     border-radius: $radius;
   }
-
-  h4.article_category {
+  section.article_information {
+    display: flex;
+    flex-direction: column;
+    gap: ($size_gap/2);
+  }
+  h2.article_category {
     background-size: cover;
+    font-size: $body_small_font_size;
+    margin: 0.5em 0em;
     span {
       background-color: $background_page;
       padding: 0.5em 1em;
       border-radius: 4px;
       font-weight: bolder;
-      font-size: 0.75em;
     }
   }
   p.article_date {
-    font-size: 0.75em;
-    font-weight: 500;
+    font-size: $body_small_font_size;
+    font-weight: $regular_weight;
   }
   h1.article_title {
-    font-size: 1.25em;
-    font-weight: 800;
+    font-size: $heading_font_size;
+    font-weight: $bold_weight;
   }
   h1.article_title:hover {
     color: $background_page;
   }
   p.article_description {
+    font-size: $body_medium_font_size;
     font-weight: 100;
     color: $medium_color;
   }
   section.article_autor {
     display: flex;
     align-items: center;
-    gap: 0.75em;
+    gap: ($size_gap/2);
     img {
       width: 2em;
     }
-    h4 {
-      font-size: 0.875em;
-      font-weight: 800;
+    h2 {
+      font-size: $body_small_font_size;
+      font-weight: $bold_weight;
     }
   }
 }
@@ -90,6 +107,7 @@ article:hover {
 
 @media screen and (min-width: 1440px) {
   article {
-    max-width: 24em;
+    max-width: $card_max_width;
+    min-height: 32em;
   }
 }
